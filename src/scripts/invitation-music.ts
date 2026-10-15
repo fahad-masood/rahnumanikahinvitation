@@ -1,5 +1,13 @@
 /** Native audio with a first-interaction fallback when browsers block autoplay. */
+let playFromEntrance: (() => void) | undefined;
+
+/** Called directly inside the entrance's trusted click, before animation begins. */
+export function startInvitationMusic(): void {
+  playFromEntrance?.();
+}
+
 const musicRoot = document.querySelector<HTMLElement>('[data-invitation-music]');
+const entranceGate = document.querySelector<HTMLDetailsElement>('[data-invitation-entrance]');
 
 if (musicRoot) {
   const audio = musicRoot.querySelector<HTMLAudioElement>('[data-music-audio]');
@@ -17,6 +25,7 @@ if (musicRoot) {
     let requestVersion = 0;
     let interactionFallbackArmed = false;
     let interactionFallbackRetired = false;
+    let entrancePlaybackRequested = !entranceGate;
     audio.volume = 0.28;
 
     function removeInteractionFallback() {
@@ -38,7 +47,7 @@ if (musicRoot) {
     }
 
     function armInteractionFallback() {
-      if (interactionFallbackArmed || interactionFallbackRetired || manuallyPaused || unavailable) return;
+      if (entranceGate || interactionFallbackArmed || interactionFallbackRetired || manuallyPaused || unavailable) return;
       interactionFallbackArmed = true;
       document.addEventListener('click', playOnFirstInteraction, true);
       document.addEventListener('keydown', playOnFirstInteraction, true);
@@ -71,7 +80,7 @@ if (musicRoot) {
     }
 
     async function requestPlayback(automatic = false) {
-      if (unavailable || (automatic && manuallyPaused)) return;
+      if (unavailable || !entrancePlaybackRequested || (automatic && manuallyPaused)) return;
       playRequested = true;
       const currentRequest = ++requestVersion;
       try {
@@ -87,7 +96,9 @@ if (musicRoot) {
           showPlaybackState(false);
           if (errorName === 'NotAllowedError') armInteractionFallback();
           status!.textContent = errorName === 'NotAllowedError'
-            ? 'Music will start with your next tap or key press. The music control is also available.'
+            ? (entranceGate
+              ? `Select Play music to listen to ${trackTitle}.`
+              : 'Music will start with your next tap or key press. The music control is also available.')
             : 'Music is paused.';
           return;
         }
@@ -96,7 +107,7 @@ if (musicRoot) {
     }
 
     audio.addEventListener('playing', () => {
-      if (manuallyPaused || unavailable) {
+      if (manuallyPaused || unavailable || !entrancePlaybackRequested) {
         audio.pause();
         return;
       }
@@ -123,17 +134,25 @@ if (musicRoot) {
         showPlaybackState(false);
       } else {
         manuallyPaused = false;
+        entrancePlaybackRequested = true;
         void requestPlayback();
       }
     });
 
-    toggle.hidden = false;
-    if (document.readyState === 'complete') {
+    playFromEntrance = () => {
+      if (manuallyPaused || unavailable) return;
+      entrancePlaybackRequested = true;
+      removeInteractionFallback();
       void requestPlayback(true);
-    } else {
-      window.addEventListener('load', () => void requestPlayback(true), { once: true });
+    };
+
+    toggle.hidden = false;
+    if (!entranceGate) {
+      if (document.readyState === 'complete') {
+        void requestPlayback(true);
+      } else {
+        window.addEventListener('load', () => void requestPlayback(true), { once: true });
+      }
     }
   }
 }
-
-export {};

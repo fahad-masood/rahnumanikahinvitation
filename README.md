@@ -17,7 +17,7 @@ npm run validate
 npm run preview
 ```
 
-Astro generates the complete invitation in `dist/index.html`. It has no client framework, backend, database, cookies, analytics, external font requests, or map embeds. The invitation, directions, and `.ics` download work with JavaScript disabled. Small external scripts enable WhatsApp sharing with the current page URL and optional invitation music.
+Astro generates the complete invitation in `dist/index.html`. It has no client framework, backend, database, cookies, analytics, external font requests, or map embeds. A Mughal double-door entrance reveals the invitation; the same tap starts the supplied music. Native disclosure keeps the invitation, directions, and `.ics` download accessible with JavaScript disabled. Small external scripts provide the door animation, music controls, and WhatsApp sharing with the current page URL.
 
 For sandboxed environments whose default home directory is read-only, use `npm ci --cache /tmp/rahnuma-npm-cache` and set `ASTRO_TELEMETRY_DISABLED=1` before Astro commands. Use the existing checkout; a separate Git worktree is unnecessary.
 
@@ -40,7 +40,8 @@ Never set `SITE_URL` to a sample or development address in production. Without a
 ## Content and identity
 
 - `src/data/event.ts`: exact event data and bride-first WhatsApp message.
-- `src/data/music.ts`: the supplied recording, self-hosted at `public/audio/lam-yati-nazeero.mp3`. Music attempts playback on opening and loops. When the browser blocks autoplay, the first tap anywhere on the invitation (or a keyboard interaction) starts it; the dedicated music button is optional. Guests can pause playback, and further taps respect that pause. Browsers can prevent sound until the first interaction. Audio is not downloaded speculatively before a playback attempt.
+- `src/data/music.ts`: the supplied recording, self-hosted at `public/audio/lam-yati-nazeero.mp3`. Music starts in the door-opening tap and loops. It stays silent before the entrance is opened. Guests can pause playback, and further taps respect that pause. Audio is not downloaded speculatively before a playback attempt.
+- `src/components/EntranceDoor.astro` and `src/scripts/invitation-entrance.ts`: the Mughal double doors, accessible native disclosure, hinge animation, scroll/focus handling, and synchronous connection to music. Reduced-motion preferences skip the door motion. Opening the entrance reveals the existing invitation; a reload presents the entrance again.
 - `src/pages/index.astro`: complete invitation, Arabic Bismillah, and metadata.
 - `src/styles/tokens.css`: the complete shared maroon-and-green palette and typography.
 - `src/styles/global.css`: responsive composition, motion, and control styles.
