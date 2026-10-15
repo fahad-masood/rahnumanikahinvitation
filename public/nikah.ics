@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Rahnuma and Fahad//Nikah Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Rahnuma & Fahad — The Nikah Ceremony
+X-WR-TIMEZONE:Asia/Kolkata
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+X-LIC-LOCATION:Asia/Kolkata
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:8b54f724-477d-4cbc-b8cb-674096d5b487
+DTSTAMP:20261015T175850Z
+DTSTART;TZID=Asia/Kolkata:20261112T180000
+SUMMARY:The Nikah Ceremony — Rahnuma Zarrin & Fahad Masood
+LOCATION:Aman Park\, New Delhi\, India
+DESCRIPTION:By the grace of Allah\, you are warmly invited to the Nikah of 
+ Rahnuma Zarrin & Fahad Masood.\n12 November 2026 | 6:00 PM IST\nYour prese
+ nce and duas would mean the world to us.\nDirections: https://maps.app.goo
+ .gl/4JDyNdM4EDK4V9nc8
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

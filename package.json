@@ -1,0 +1,18 @@
+{
+  "name": "rahnuma-fahad-nikah",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "validate": "node scripts/validate.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.0"
+  },
+  "engines": {
+    "node": ">=22.22.0"
+  }
+}

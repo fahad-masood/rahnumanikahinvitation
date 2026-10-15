@@ -1,0 +1,2 @@
+# RFC 5545 calendars require CRLF and can contain meaningful folded text spaces.
+*.ics -text whitespace=-blank-at-eol
