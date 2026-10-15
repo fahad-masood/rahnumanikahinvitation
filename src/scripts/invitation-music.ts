@@ -1,4 +1,4 @@
-/** Optional native audio. Browsers may require the dedicated play button. */
+/** Native audio with a first-interaction fallback when browsers block autoplay. */
 const musicRoot = document.querySelector<HTMLElement>('[data-invitation-music]');
 
 if (musicRoot) {
@@ -15,7 +15,34 @@ if (musicRoot) {
     let unavailable = false;
     let playRequested = false;
     let requestVersion = 0;
+    let interactionFallbackArmed = false;
+    let interactionFallbackRetired = false;
     audio.volume = 0.28;
+
+    function removeInteractionFallback() {
+      document.removeEventListener('click', playOnFirstInteraction, true);
+      document.removeEventListener('keydown', playOnFirstInteraction, true);
+      interactionFallbackArmed = false;
+      interactionFallbackRetired = true;
+    }
+
+    function playOnFirstInteraction(event: Event) {
+      if (!event.isTrusted || manuallyPaused || unavailable) return;
+      if (event.target instanceof Node && musicRoot!.contains(event.target)) return;
+      if (event instanceof KeyboardEvent && (
+        event.repeat || event.altKey || event.ctrlKey || event.metaKey
+        || ['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'NumLock', 'ScrollLock', 'Escape', 'Unidentified', 'Dead', 'Process'].includes(event.key)
+      )) return;
+      removeInteractionFallback();
+      void requestPlayback(true);
+    }
+
+    function armInteractionFallback() {
+      if (interactionFallbackArmed || interactionFallbackRetired || manuallyPaused || unavailable) return;
+      interactionFallbackArmed = true;
+      document.addEventListener('click', playOnFirstInteraction, true);
+      document.addEventListener('keydown', playOnFirstInteraction, true);
+    }
 
     function showPlaybackState(playing: boolean) {
       if (unavailable) return;
@@ -30,6 +57,7 @@ if (musicRoot) {
     function showUnavailable() {
       if (unavailable) return;
       unavailable = true;
+      removeInteractionFallback();
       requestVersion += 1;
       playRequested = false;
       audio!.pause();
@@ -57,8 +85,9 @@ if (musicRoot) {
         const errorName = error instanceof DOMException ? error.name : '';
         if (errorName === 'NotAllowedError' || errorName === 'AbortError') {
           showPlaybackState(false);
+          if (errorName === 'NotAllowedError') armInteractionFallback();
           status!.textContent = errorName === 'NotAllowedError'
-            ? `Select Play music to listen to ${trackTitle}.`
+            ? 'Music will start with your next tap or key press. The music control is also available.'
             : 'Music is paused.';
           return;
         }
@@ -72,6 +101,7 @@ if (musicRoot) {
         return;
       }
       playRequested = false;
+      removeInteractionFallback();
       showPlaybackState(true);
       status.textContent = `Playing ${trackTitle}.`;
     });
@@ -86,6 +116,7 @@ if (musicRoot) {
       if (unavailable) return;
       if (!audio.paused || playRequested) {
         manuallyPaused = true;
+        removeInteractionFallback();
         requestVersion += 1;
         playRequested = false;
         audio.pause();

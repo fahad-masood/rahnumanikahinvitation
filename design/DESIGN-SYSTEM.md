@@ -10,7 +10,7 @@ Every visible color is a shade of maroon or green. All authoritative values are 
 | --- | --- | --- |
 | `--paper` | `#edf1e8` | Pale sage stationery |
 | `--paper-deep` | `#e2e9dc` | Architectural illustration ground |
-| `--maroon` | `#4d0000` | Dark sienna names, headings, primary actions, velvet invitation and closing panels |
+| `--maroon` | `#4f181d` | Reference-matched burgundy names, headings, primary actions, velvet invitation and closing panels |
 | `--maroon-soft` | `#80515d` | Floral petals and ornament strokes |
 | `--maroon-line` | `#b28f97` | Fine borders and architectural arch |
 | `--forest` | `#183e34` | Botanical stems and supporting green accents |
@@ -23,7 +23,7 @@ Every visible color is a shade of maroon or green. All authoritative values are 
 
 Self-hosted Great Vibes forms the couple's and parents' names. Cormorant Garamond variable normal and italic form the editorial headings, quotes, and date numerals. Inter variable is reserved for labels, practical details, and controls. Amiri renders the exact Arabic opening; the included subset is specific to that text.
 
-Use the paired Mughal arch lines, one upper-left L-shaped floral arrangement, thin double stationery borders, central rosette separators, and illustrated architecture. Dark sienna panels use the lightweight local velvet texture; the couple illustration shows both people from behind. The date is always prominent. Content order is a centered arch hero, dark family invitation, scriptural excerpt, ceremonial date composition, location, maroon closing, and monogram footer. Names and date must be readable immediately on a narrow phone.
+Use the paired Mughal arch lines, one upper-left L-shaped floral arrangement, thin double stationery borders, central rosette separators, and illustrated architecture. Burgundy panels use the lightweight local velvet image, recreated from the supplied visual reference, with `background-size: cover` and no tiling. The couple illustration follows the reference's rear-view pose and flowing bridal train. The date is always prominent. Content order is a centered arch hero, dark family invitation, scriptural excerpt, ceremonial date composition, location, maroon closing, and monogram footer. Names and date must be readable immediately on a narrow phone.
 
 Controls are rectangular, at least 50 px high, with a solid maroon primary action and fine-line secondary action. Use restrained opacity/translation entrance motion, immediate content, and the existing reduced-motion override.
 

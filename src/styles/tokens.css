@@ -3,7 +3,7 @@
   color-scheme: light;
   --paper: #edf1e8;
   --paper-deep: #e2e9dc;
-  --maroon: #4d0000;
+  --maroon: #4f181d;
   --maroon-soft: #80515d;
   --maroon-line: #b28f97;
   --forest: #183e34;
@@ -17,5 +17,5 @@
   --page-width: 1280px;
   --section-space: clamp(4.5rem, 9vw, 8rem);
   --hairline: 1px solid color-mix(in srgb, var(--maroon) 23%, transparent);
-  --velvet-texture: url('/textures/velvet.svg');
+  --velvet-texture: url('/textures/velvet.webp');
 }
