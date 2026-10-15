@@ -3,9 +3,11 @@ import '../styles/global.css';
 import '../styles/names.css';
 import Arch from '../components/Arch.astro';
 import Botanical from '../components/Botanical.astro';
+import CornerFloral from '../components/CornerFloral.astro';
 import Ornament from '../components/Ornament.astro';
 import Icon from '../components/Icon.astro';
 import Calendar from '../components/Calendar.astro';
+import InvitationMusic from '../components/InvitationMusic.astro';
 import { event } from '../data/event';
 
 const title = `${event.couple} · The Nikah Ceremony`;
@@ -20,7 +22,7 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow, noarchive" />
-    <meta name="theme-color" content="#4d2030" />
+    <meta name="theme-color" content="#4d0000" />
     <title>{title}</title>
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:type" content="website" />
@@ -52,7 +54,7 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
     </header>
     <main>
       <section id="home" class="hero" aria-labelledby="couple-names">
-        <div class="hero-botanicals" aria-hidden="true"><Botanical class="hero-floral hero-floral-left" /><Botanical class="hero-floral hero-floral-right" /></div>
+        <CornerFloral />
         <Arch />
         <div class="hero-content">
           <p class="bismillah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
@@ -73,7 +75,7 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
           <Ornament />
           <p class="eyebrow">AN INVITATION FROM OUR HEARTS</p>
           <h2 id="invitation-title">With gratitude.<br /><em>With joy. With you.</em></h2>
-          <img class="couple-illustration" src="/illustrations/couple.webp" width="640" height="686" loading="lazy" decoding="async" alt="An illustrated bride in a hijab beside a groom with spiky hair and a neatly trimmed Italian beard." />
+          <img class="couple-illustration" src="/illustrations/couple.webp" width="640" height="686" loading="lazy" decoding="async" alt="A rear-view illustration of a bride in a hijab beside a groom with spiky hair, both facing away." />
           <p class="invitation-intro">With hearts filled with gratitude and joy,</p>
           <p class="host-name">Mrs. Shamshad Begum <span>and family</span></p>
           <p class="invitation-copy">request the honour of your presence and heartfelt duas<br class="desktop-break" /> on the blessed occasion of the <strong>Nikah Ceremony</strong> of</p>
@@ -149,6 +151,7 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
       </section>
     </main>
     <footer class="page-footer"><a class="footer-monogram" href="#home" aria-label="R & F — Rahnuma and Fahad, back to top">R <em>&</em> F</a><p>12 NOVEMBER 2026 <span aria-hidden="true">✧</span> WITH FAITH, WITH LOVE</p><a href="#home" class="back-top">BACK TO TOP <span aria-hidden="true">↑</span></a></footer>
+    <InvitationMusic />
     <script>
       import { whatsappMessage } from '../data/event';
       const shareLink = document.querySelector<HTMLAnchorElement>('[data-whatsapp-share]');

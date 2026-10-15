@@ -17,7 +17,7 @@ npm run validate
 npm run preview
 ```
 
-Astro generates the complete invitation in `dist/index.html`. It has no client framework, backend, database, cookies, analytics, external font requests, or map embeds. The invitation, directions, and `.ics` download work with JavaScript disabled. The small external script enables WhatsApp sharing with the current page URL.
+Astro generates the complete invitation in `dist/index.html`. It has no client framework, backend, database, cookies, analytics, external font requests, or map embeds. The invitation, directions, and `.ics` download work with JavaScript disabled. Small external scripts enable WhatsApp sharing with the current page URL and optional invitation music.
 
 For sandboxed environments whose default home directory is read-only, use `npm ci --cache /tmp/rahnuma-npm-cache` and set `ASTRO_TELEMETRY_DISABLED=1` before Astro commands. Use the existing checkout; a separate Git worktree is unnecessary.
 
@@ -40,6 +40,7 @@ Never set `SITE_URL` to a sample or development address in production. Without a
 ## Content and identity
 
 - `src/data/event.ts`: exact event data and bride-first WhatsApp message.
+- `src/data/music.ts`: optional requested recording. Add the supplied audio to `public/audio/` and set `audioSource` to its local path. No recording has been supplied or bundled. The music control renders only when a source is configured, attempts playback on opening, and offers a Play Music button when the browser requires a tap. Guests can pause playback.
 - `src/pages/index.astro`: complete invitation, Arabic Bismillah, and metadata.
 - `src/styles/tokens.css`: the complete shared maroon-and-green palette and typography.
 - `src/styles/global.css`: responsive composition, motion, and control styles.

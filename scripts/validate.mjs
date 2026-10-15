@@ -36,7 +36,14 @@ assert.match(html, /بِسْمِ اللَّهِ الرَّحْمَٰنِ الر�
 assert.match(html, /\blang=["']ar["']/i, 'Identify Arabic content for assistive technology.');
 assert.match(html, /\bdir=["']rtl["']/i, 'Use right-to-left Arabic text direction.');
 assert.doesNotMatch(html, /<iframe\b/i, 'Do not load a map iframe.');
-assert.doesNotMatch(html, /<(?:audio|video)\b/i, 'Keep the invitation free from media loading and autoplay.');
+assert.doesNotMatch(html, /<video\b/i, 'Keep the invitation free from video loading and embeds.');
+for (const audio of html.matchAll(/<audio\b[^>]*>/gi)) {
+  assert.match(audio[0], /\bdata-music-audio\b/, 'Only the requested invitation music may be included.');
+  assert.match(audio[0], /\bpreload=["']none["']/i, 'Avoid speculative audio downloads.');
+  const source = audio[0].match(/\bsrc=["']([^"']+)["']/i)?.[1];
+  assert.ok(source?.startsWith('/audio/'), 'Keep the requested recording self-hosted.');
+  await readFile(new URL(`dist${source}`, root));
+}
 
 function meta(name) {
   const tags = html.match(/<meta\b[^>]*>/gi) || [];
