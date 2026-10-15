@@ -54,12 +54,13 @@ body{position:relative}
 .hero-floral-right{right:0;transform:rotate(8deg)}
 .section-inner{max-width:1080px;margin:auto;padding-right:32px;padding-left:32px;text-align:center}
 .section-dark{background:var(--forest);color:var(--paper)}
-.invitation{padding:var(--section-space) 24px;position:relative}
+.invitation{padding:var(--section-space) 24px;position:relative;background:var(--maroon)}
 .invitation:before,.invitation:after{content:'';position:absolute;inset:20px;border:1px solid color-mix(in srgb,var(--sage) 23%,transparent);pointer-events:none}
 .invitation:after{inset:26px;border-color:color-mix(in srgb,var(--sage) 10%,transparent)}
 .section-dark .ornament{color:var(--sage)}
 .invitation .eyebrow{color:var(--sage);margin:25px 0 22px}
 .invitation h2{margin-bottom:38px}
+.couple-illustration{width:230px;max-width:75%;height:auto;margin:-10px auto 30px}
 .invitation h2 em{color:var(--sage-light)}
 .invitation-intro,.invitation-copy,.invitation-outro{font-size:13px;line-height:2.1;color:var(--sage-light)}
 .host-name{font-family:var(--serif);font-size:33px;line-height:1.2;margin:13px 0 16px}

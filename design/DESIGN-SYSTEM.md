@@ -10,10 +10,10 @@ Every visible color is a shade of maroon or green. All authoritative values are 
 | --- | --- | --- |
 | `--paper` | `#edf1e8` | Pale sage stationery |
 | `--paper-deep` | `#e2e9dc` | Architectural illustration ground |
-| `--maroon` | `#592637` | Names, headings, primary actions, closing |
+| `--maroon` | `#4d2030` | Names, headings, primary actions, invitation and closing panels |
 | `--maroon-soft` | `#80515d` | Floral petals and ornament strokes |
 | `--maroon-line` | `#b28f97` | Fine borders and architectural arch |
-| `--forest` | `#183e34` | Formal invitation panel, botanical stems |
+| `--forest` | `#183e34` | Botanical stems and supporting green accents |
 | `--forest-deep` | `#123027` | Deep green supporting shade |
 | `--green-muted` | `#536958` | Supporting text |
 | `--sage` | `#b8c8ad` | Leaves and accents on dark surfaces |
@@ -21,7 +21,7 @@ Every visible color is a shade of maroon or green. All authoritative values are 
 
 ## Typography and composition
 
-Self-hosted Cormorant Garamond variable normal and italic form the names, editorial headings, quotes, and date numerals. Inter variable is reserved for labels, practical details, and controls. Amiri renders the exact Arabic opening; the included subset is specific to that text.
+Self-hosted Great Vibes forms the couple's and parents' names. Cormorant Garamond variable normal and italic form the editorial headings, quotes, and date numerals. Inter variable is reserved for labels, practical details, and controls. Amiri renders the exact Arabic opening; the included subset is specific to that text.
 
 Use the paired Mughal arch lines, corner florals, thin double stationery borders, central rosette separators, and illustrated architecture. The date is always prominent. Content order is a centered arch hero, dark family invitation, scriptural excerpt, ceremonial date composition, location, maroon closing, and monogram footer. Names and date must be readable immediately on a narrow phone.
 

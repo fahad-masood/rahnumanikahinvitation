@@ -35,4 +35,13 @@ amiri-arabic.woff2
     --output-file=amiri-arabic.woff2
   Expand the subset if introducing additional Arabic text.
 
-Total WOFF2 size: 145,252 bytes (approximately 142 KiB).
+great-vibes-latin.woff2
+  @fontsource/great-vibes@5.3.0
+  files/great-vibes-latin-400-normal.woff2
+  Latin subset; static weight 400; normal; unmodified.
+  Source: https://registry.npmjs.org/@fontsource/great-vibes/-/great-vibes-5.3.0.tgz
+  Downloaded with npm pack, preserving npm integrity verification.
+  Package SHA-1: 69fb0749c7ccc6a11c7364d1a9193aee7ba890f5
+  Copyright and SIL Open Font License: LICENSE-Great-Vibes.txt.
+
+Total WOFF2 size: 188,052 bytes (approximately 184 KiB).

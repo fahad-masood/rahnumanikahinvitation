@@ -1,9 +1,11 @@
 ---
 import '../styles/global.css';
+import '../styles/names.css';
 import Arch from '../components/Arch.astro';
 import Botanical from '../components/Botanical.astro';
 import Ornament from '../components/Ornament.astro';
 import Icon from '../components/Icon.astro';
+import Calendar from '../components/Calendar.astro';
 import { event } from '../data/event';
 
 const title = `${event.couple} · The Nikah Ceremony`;
@@ -18,7 +20,7 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow, noarchive" />
-    <meta name="theme-color" content="#592637" />
+    <meta name="theme-color" content="#4d2030" />
     <title>{title}</title>
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:type" content="website" />
@@ -37,7 +39,7 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
     <meta name="twitter:image" content={socialImage} />
     <meta name="twitter:image:alt" content="The Nikah Ceremony — Rahnuma & Fahad — 12 November 2026" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" href="/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/great-vibes-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/amiri-arabic.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
@@ -71,6 +73,7 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
           <Ornament />
           <p class="eyebrow">AN INVITATION FROM OUR HEARTS</p>
           <h2 id="invitation-title">With gratitude.<br /><em>With joy. With you.</em></h2>
+          <img class="couple-illustration" src="/illustrations/couple.webp" width="640" height="686" loading="lazy" decoding="async" alt="An illustrated bride in a hijab beside a groom with spiky hair and a neatly trimmed Italian beard." />
           <p class="invitation-intro">With hearts filled with gratitude and joy,</p>
           <p class="host-name">Mrs. Shamshad Begum <span>and family</span></p>
           <p class="invitation-copy">request the honour of your presence and heartfelt duas<br class="desktop-break" /> on the blessed occasion of the <strong>Nikah Ceremony</strong> of</p>
@@ -97,13 +100,9 @@ const socialImage = Astro.site ? new URL('/social-preview.png', Astro.site).href
       <section id="celebration" class="celebration" aria-labelledby="celebration-title">
         <div class="section-inner">
           <p class="eyebrow">A DAY TO HOLD CLOSE</p>
-          <h2 id="celebration-title">The beginning of <em>forever.</em></h2>
+          <h2 id="celebration-title">Save the <em>date</em></h2>
           <p class="inshallah">In Shaa Allah</p>
-          <div class="date-composition">
-            <p class="date-side date-weekday">THURSDAY<span>THE NIKAH CEREMONY</span></p>
-            <time class="ceremony-date" datetime="2026-11-12T18:00:00+05:30"><span class="date-number">12</span><span class="date-month">NOVEMBER 2026</span></time>
-            <p class="date-side date-time">6:00 PM<span>INDIA STANDARD TIME</span></p>
-          </div>
+          <Calendar />
           <div class="venue-heading"><Icon name="pin" /><p>Aman Park <span>New Delhi, India</span></p></div>
           <div class="actions">
             <a class="button button-maroon" href={event.mapsUrl} target="_blank" rel="noopener noreferrer"><Icon name="pin" />Get Directions<Icon name="arrow" /></a>
