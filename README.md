@@ -40,7 +40,7 @@ Never set `SITE_URL` to a sample or development address in production. Without a
 ## Content and identity
 
 - `src/data/event.ts`: exact event data and bride-first WhatsApp message.
-- `src/data/music.ts`: optional requested recording. Add the supplied audio to `public/audio/` and set `audioSource` to its local path. No recording has been supplied or bundled. The music control renders only when a source is configured, attempts playback on opening, and offers a Play Music button when the browser requires a tap. Guests can pause playback.
+- `src/data/music.ts`: the supplied recording, self-hosted at `public/audio/lam-yati-nazeero.mp3`. Music attempts playback on opening and loops; a Play Music button appears when the browser requires a tap. Guests can pause playback. Audio is not downloaded speculatively before a playback attempt.
 - `src/pages/index.astro`: complete invitation, Arabic Bismillah, and metadata.
 - `src/styles/tokens.css`: the complete shared maroon-and-green palette and typography.
 - `src/styles/global.css`: responsive composition, motion, and control styles.
